@@ -5,12 +5,19 @@ import com.thedevwolf.mvvmdemo.di.module.AppModule
 import com.thedevwolf.mvvmdemo.di.module.ContextModule
 import com.thedevwolf.mvvmdemo.base.BaseActivity
 import com.thedevwolf.mvvmdemo.di.module.RoomModule
-import com.thedevwolf.mvvmdemo.vm.MainViewModel
+import com.thedevwolf.mvvmdemo.vm.activity.MainViewModel
+import com.thedevwolf.mvvmdemo.vm.fragment.MostPopularViewModel
+import com.thedevwolf.mvvmdemo.vm.fragment.TopRatedViewModel
 import dagger.Component
 
 @Component(modules = [AppModule::class, ContextModule::class, ApiModule::class,RoomModule::class])
 interface ApiComponent {
     fun inject(baseActivity: BaseActivity)
 
+
+    //View Model
     fun inject(mainViewModel: MainViewModel)
+    fun inject(topRatedViewModel: TopRatedViewModel)
+    fun inject(mostPopularViewModel: MostPopularViewModel)
+
 }

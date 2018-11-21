@@ -2,7 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
-        <variable name="heros" type="com.thedevwolf.mvvmdemo.vm.MainViewModel"/>
+        <variable name="heros" type="com.thedevwolf.mvvmdemo.vm.activity.MainViewModel"/>
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -10,7 +10,7 @@
             tools:context=".UI.activity.MainActivity">
 
 
-        <ProgressBar
+        <!--<ProgressBar
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:mutableVisibility="@{heros.getLoadingVisibility}"
@@ -30,21 +30,21 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
-<!--        <FrameLayout
+                app:layout_constraintEnd_toEndOf="parent"/>-->
+        <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" android:id="@+id/container"
                 app:layout_constraintBottom_toTopOf="@+id/bottom_navigation">
 
-        </FrameLayout>-->
+        </FrameLayout>
 
 
 
 
 
-       <!-- <com.google.android.material.bottomnavigation.BottomNavigationView
+        <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/bottom_navigation"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -56,6 +56,6 @@
                 app:onNavigationItemSelected="@{heros.getNavigationMenuSelectListener}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"/>-->
+                app:layout_constraintStart_toStartOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -1,13 +1,11 @@
-package com.thedevwolf.mvvmdemo.vm
+package com.thedevwolf.mvvmdemo.vm.activity
 
 import android.app.Application
 import android.util.Log
-import android.view.MenuItem
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.navigation.NavigationView
 import com.thedevwolf.mvvmdemo.R
 import com.thedevwolf.mvvmdemo.base.BaseAndroidViewModel
 import com.thedevwolf.mvvmdemo.data.Repository
@@ -28,9 +26,14 @@ class MainViewModel(application: Application) : BaseAndroidViewModel(application
     private val compositeDisposable = CompositeDisposable()
 
     //for loaded fragment
-    val loadingFragment = MutableLiveData<Fragment>()
+    val loadingFragment by lazy {
+        MutableLiveData<Fragment>()
+    }
+    val loadedFragmentTitle by lazy {
+        MutableLiveData<String>()
+    }
 
-
+/*
     //for progress bar
     val loadingVisibility = MutableLiveData<Int>()
     //for adapter
@@ -38,15 +41,15 @@ class MainViewModel(application: Application) : BaseAndroidViewModel(application
 
     //error control
     val errorMessage: MutableLiveData<String> = MutableLiveData()
-    val errorClickListener = View.OnClickListener { loadHeros() }
+    val errorClickListener = View.OnClickListener { loadHeros() }*/
 
     init {
-        //loadingFragment.value=TopRatedFragment.newInstance()
-
-        loadHeros()
+        loadingFragment.value=TopRatedFragment.newInstance()
+        loadedFragmentTitle.value="Top Rated"
+        //loadHeros()
     }
 
-    private fun loadHeros() {
+/*    private fun loadHeros() {
         compositeDisposable.add(
             repository.getPopularMovies()
                 .subscribeOn(Schedulers.io())
@@ -64,7 +67,7 @@ class MainViewModel(application: Application) : BaseAndroidViewModel(application
                     errorMessage.value = "error while fetching data"
                 })
         )
-    }
+    }*/
 
 
      val navigationMenuSelectListener: BottomNavigationView.OnNavigationItemSelectedListener =
@@ -73,16 +76,22 @@ class MainViewModel(application: Application) : BaseAndroidViewModel(application
                 R.id.top_rate -> {
                     Log.e(javaClass.simpleName, "Top Rated")
                     loadingFragment.value=TopRatedFragment.newInstance()
+                    loadedFragmentTitle.value="Top Rated"
+
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.most_popular -> {
                     Log.e(javaClass.simpleName, "Most popular")
                     loadingFragment.value=MostPopularFragment.newInstance()
+                    loadedFragmentTitle.value="Most Popular"
+
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.favorite ->{
                     Log.e(javaClass.simpleName, "Favorite")
                     loadingFragment.value=FavoriteFragment.newInstance()
+                    loadedFragmentTitle.value="Favorite"
+
                     return@OnNavigationItemSelectedListener true
                 }
                 else -> return@OnNavigationItemSelectedListener false

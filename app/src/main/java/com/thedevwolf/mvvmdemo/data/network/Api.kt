@@ -11,6 +11,9 @@ import retrofit2.http.Query
 interface Api {
 
 
-    @GET("popular")
+    @GET("top_rated")
     fun getTopRatedMovies(@Query("api_key") API:String):Observable<Movie>
+
+    @GET("popular")
+    fun getMostPopularMovies(@Query("api_key") API: String):Observable<Movie>
 }

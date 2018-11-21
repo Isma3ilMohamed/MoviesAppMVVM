@@ -1,11 +1,11 @@
-package com.thedevwolf.mvvmdemo.vm
+package com.thedevwolf.mvvmdemo.vm.adapter
 
 import androidx.lifecycle.MutableLiveData
 import com.thedevwolf.moviesappmvvm.data.model.Movie
 import com.thedevwolf.mvvmdemo.base.BaseViewModel
 import com.thedevwolf.mvvmdemo.utils.Constants
 
-class HeroViewModel:BaseViewModel() {
+class MovieViewModel:BaseViewModel() {
     val movieTitle=MutableLiveData<String>()
     val movieImage=MutableLiveData<String>()
 

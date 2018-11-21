@@ -1,9 +1,7 @@
 package com.thedevwolf.mvvmdemo.ui.adapter
 
 
-import android.app.Application
 import androidx.recyclerview.widget.RecyclerView
-import com.thedevwolf.mvvmdemo.data.model.Models.Hero
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.NonNull
@@ -11,7 +9,7 @@ import androidx.databinding.DataBindingUtil
 import com.thedevwolf.moviesappmvvm.data.model.Movie
 import com.thedevwolf.mvvmdemo.R
 import com.thedevwolf.mvvmdemo.databinding.RecycleMovieBinding
-import com.thedevwolf.mvvmdemo.vm.HeroViewModel
+import com.thedevwolf.mvvmdemo.vm.adapter.MovieViewModel
 
 
 class HeroesAdapter :
@@ -42,10 +40,10 @@ class HeroesAdapter :
 
     inner class HeroViewHolder(private val movieBinding: RecycleMovieBinding)
         : RecyclerView.ViewHolder(movieBinding.root) {
-        private val heroViewModel=HeroViewModel()
+        private val heroViewModel= MovieViewModel()
         fun bind(hero: Movie.Result) {
             heroViewModel.bind(hero)
-            movieBinding.hero=heroViewModel
+            movieBinding.movie=heroViewModel
         }
 
 
