@@ -6,6 +6,7 @@ import com.thedevwolf.mvvmdemo.di.module.ContextModule
 import com.thedevwolf.mvvmdemo.base.BaseActivity
 import com.thedevwolf.mvvmdemo.di.module.RoomModule
 import com.thedevwolf.mvvmdemo.vm.activity.MainViewModel
+import com.thedevwolf.mvvmdemo.vm.fragment.FavoriteViewModel
 import com.thedevwolf.mvvmdemo.vm.fragment.MostPopularViewModel
 import com.thedevwolf.mvvmdemo.vm.fragment.TopRatedViewModel
 import dagger.Component
@@ -19,5 +20,6 @@ interface ApiComponent {
     fun inject(mainViewModel: MainViewModel)
     fun inject(topRatedViewModel: TopRatedViewModel)
     fun inject(mostPopularViewModel: MostPopularViewModel)
+    fun inject(favoriteViewModel: FavoriteViewModel)
 
 }
