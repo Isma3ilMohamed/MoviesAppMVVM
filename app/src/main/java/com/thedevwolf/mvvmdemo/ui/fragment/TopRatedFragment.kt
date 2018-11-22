@@ -1,5 +1,6 @@
 package com.thedevwolf.mvvmdemo.ui.fragment
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -47,8 +48,13 @@ class TopRatedFragment : Fragment() {
         topRatedViewModel=ViewModelProviders.of(this).get(TopRatedViewModel::class.java)
 
         //layout manager
-        topRatedBinding.rvMovies.layoutManager=GridLayoutManager(activity,2)
 
+        if  (resources.configuration.orientation== Configuration.ORIENTATION_LANDSCAPE) {
+
+            topRatedBinding.rvMovies.layoutManager = GridLayoutManager(activity, 3)
+        }else{
+            topRatedBinding.rvMovies.layoutManager = GridLayoutManager(activity, 2)
+        }
         topRatedViewModel.errorMessage.observe(viewLifecycleOwner, Observer {
              error -> if(error!=null)showError(error) else hideError()
         })

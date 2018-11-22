@@ -2,7 +2,6 @@ package com.thedevwolf.mvvmdemo.data.network
 
 
 import com.thedevwolf.moviesappmvvm.data.model.Movie
-import com.thedevwolf.mvvmdemo.data.model.Models.Hero
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Query

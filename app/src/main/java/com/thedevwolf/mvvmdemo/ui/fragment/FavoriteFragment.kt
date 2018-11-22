@@ -1,5 +1,6 @@
 package com.thedevwolf.mvvmdemo.ui.fragment
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -32,8 +33,11 @@ class FavoriteFragment:Fragment() {
     private fun initFragment() {
         favoriteViewModel=ViewModelProviders.of(this).get(FavoriteViewModel::class.java)
 
-        favoriteBinding.rvMovies.layoutManager=GridLayoutManager(context,2)
-
+        if  (resources.configuration.orientation==Configuration.ORIENTATION_LANDSCAPE){
+            favoriteBinding.rvMovies.layoutManager = GridLayoutManager(context, 3)
+        }else {
+            favoriteBinding.rvMovies.layoutManager = GridLayoutManager(context, 2)
+        }
         favoriteBinding.movie=favoriteViewModel
 
     }

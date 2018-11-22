@@ -1,5 +1,6 @@
 package com.thedevwolf.mvvmdemo.ui.fragment
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -43,8 +44,13 @@ class MostPopularFragment:Fragment() {
         mostPopularViewModel= ViewModelProviders.of(this).get(MostPopularViewModel::class.java)
 
         //layout manager
-        mostPopularBinding.rvMovies.layoutManager= GridLayoutManager(activity,2)
 
+        if  (resources.configuration.orientation== Configuration.ORIENTATION_LANDSCAPE) {
+            mostPopularBinding.rvMovies.layoutManager = GridLayoutManager(activity, 3)
+        }else{
+            mostPopularBinding.rvMovies.layoutManager = GridLayoutManager(activity, 2)
+
+        }
         mostPopularViewModel.errorMessage.observe(viewLifecycleOwner, Observer {
                 error -> if(error!=null)showError(error) else hideError()
         })

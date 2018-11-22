@@ -9,6 +9,7 @@ import com.thedevwolf.mvvmdemo.base.BaseAndroidViewModel
 import com.thedevwolf.mvvmdemo.data.Repository
 import com.thedevwolf.mvvmdemo.ui.activity.DetailActivity
 import com.thedevwolf.mvvmdemo.ui.adapter.HeroesAdapter
+import com.thedevwolf.mvvmdemo.utils.Constants.MOVIE
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -28,7 +29,7 @@ class TopRatedViewModel(application: Application) : BaseAndroidViewModel(applica
 
         application.apply {
             startActivity(intentFor<DetailActivity>().putExtras(Bundle().apply {
-                putParcelable("movie",it)
+                putParcelable(MOVIE,it)
             }).newTask())
         }
     }

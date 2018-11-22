@@ -1,6 +1,7 @@
 package com.thedevwolf.mvvmdemo.vm.fragment
 
 import android.app.Application
+import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.lifecycle.MutableLiveData
@@ -8,6 +9,7 @@ import com.thedevwolf.mvvmdemo.base.BaseAndroidViewModel
 import com.thedevwolf.mvvmdemo.data.Repository
 import com.thedevwolf.mvvmdemo.ui.activity.DetailActivity
 import com.thedevwolf.mvvmdemo.ui.adapter.HeroesAdapter
+import com.thedevwolf.mvvmdemo.utils.Constants
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -25,7 +27,11 @@ class MostPopularViewModel(application: Application):BaseAndroidViewModel(applic
     private val compositeDisposable = CompositeDisposable()
     val loadingVisibility = MutableLiveData<Int>()
     var heroesAdapter = HeroesAdapter {
-        application.startActivity(application.intentFor<DetailActivity>().newTask())
+        application.apply {
+            startActivity(intentFor<DetailActivity>().putExtras(Bundle().apply {
+                putParcelable(Constants.MOVIE,it)
+            }).newTask())
+        }
     }
 
     //error control

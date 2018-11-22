@@ -5,6 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import com.thedevwolf.mvvmdemo.controller.App
 import com.thedevwolf.mvvmdemo.di.component.ApiComponent
 import com.thedevwolf.mvvmdemo.di.module.ContextModule
+import com.thedevwolf.mvvmdemo.vm.activity.DetailViewModel
 
 import com.thedevwolf.mvvmdemo.vm.activity.MainViewModel
 import com.thedevwolf.mvvmdemo.vm.fragment.FavoriteViewModel
@@ -30,6 +31,7 @@ abstract class BaseAndroidViewModel(application: Application):AndroidViewModel(a
             is TopRatedViewModel -> injector.inject(this)
             is MostPopularViewModel -> injector.inject(this)
             is FavoriteViewModel -> injector.inject(this)
+            is DetailViewModel -> injector.inject(this)
 
         }
     }
