@@ -7,12 +7,13 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.thedevwolf.moviesappmvvm.data.model.Movie
 import com.thedevwolf.mvvmdemo.R
 import com.thedevwolf.mvvmdemo.data.db.Entity.MovieEntity
 import com.thedevwolf.mvvmdemo.databinding.RecycleMovieBinding
 import com.thedevwolf.mvvmdemo.vm.adapter.MovieViewModel
 
-class FavoriteAdapter() : ListAdapter<MovieEntity, FavoriteAdapter.FavoriteViewHolder>(DIFF_UTIL) {
+class FavoriteAdapter() : ListAdapter<Movie.Result, FavoriteAdapter.FavoriteViewHolder>(DIFF_UTIL) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteViewHolder {
         val movieBinding: RecycleMovieBinding = DataBindingUtil.inflate(
             LayoutInflater.from(parent.context),
@@ -30,7 +31,7 @@ class FavoriteAdapter() : ListAdapter<MovieEntity, FavoriteAdapter.FavoriteViewH
         RecyclerView.ViewHolder(movieBinding.root) {
         private val heroViewModel= MovieViewModel()
 
-            fun bind(item: MovieEntity?) {
+            fun bind(item: Movie.Result?) {
                 heroViewModel.bind(item!!)
                 movieBinding.movie=heroViewModel
             }
@@ -39,12 +40,12 @@ class FavoriteAdapter() : ListAdapter<MovieEntity, FavoriteAdapter.FavoriteViewH
 
 
     companion object {
-        val DIFF_UTIL: DiffUtil.ItemCallback<MovieEntity> = object : DiffUtil.ItemCallback<MovieEntity>() {
-            override fun areItemsTheSame(oldItem: MovieEntity, newItem: MovieEntity): Boolean {
+        val DIFF_UTIL: DiffUtil.ItemCallback<Movie.Result> = object : DiffUtil.ItemCallback<Movie.Result>() {
+            override fun areItemsTheSame(oldItem: Movie.Result, newItem: Movie.Result): Boolean {
                 return oldItem.id == newItem.id
             }
 
-            override fun areContentsTheSame(oldItem: MovieEntity, newItem: MovieEntity): Boolean {
+            override fun areContentsTheSame(oldItem: Movie.Result, newItem: Movie.Result): Boolean {
                 return oldItem == newItem
             }
 

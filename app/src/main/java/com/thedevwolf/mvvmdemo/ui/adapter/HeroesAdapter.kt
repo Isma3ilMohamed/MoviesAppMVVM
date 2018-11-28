@@ -47,9 +47,11 @@ class HeroesAdapter (val onClickListener: (Movie.Result) -> Unit):
     inner class HeroViewHolder(private val movieBinding: RecycleMovieBinding)
         : RecyclerView.ViewHolder(movieBinding.root) {
         private val heroViewModel= MovieViewModel()
-        fun bind( hero: Movie.Result) {
+        fun bind( hero: Movie.Result)= with(movieBinding.root) {
             heroViewModel.bind(hero)
             movieBinding.movie=heroViewModel
+
+
 
         }
 

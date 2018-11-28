@@ -2,6 +2,8 @@ package com.thedevwolf.moviesappmvvm.data.model
 
 import android.os.Parcel
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
 
 data class Movie(
@@ -11,25 +13,25 @@ data class Movie(
         var results: List<Result?>?
 ) {
 
+    @Entity(tableName = "result")
     data class Result(
-            var vote_count: Int?,
-            var id: Int?,
-            var video: Boolean?,
-            var vote_average: Double?,
-            var title: String?,
-            var popularity: Double?,
-            var poster_path: String?,
-            var original_language: String?,
-            var original_title: String?,
-            var genre_ids: List<Int?>?,
-            var backdrop_path: String?,
-            var adult: Boolean?,
-            var overview: String?,
-            var release_date: String?
+        var vote_count: Int?,
+        @PrimaryKey var id: Int,
+        var video: Boolean?,
+        var vote_average: Double?,
+        var title: String?,
+        var popularity: Double?,
+        var poster_path: String?,
+        var original_language: String?,
+        var original_title: String?,
+        var backdrop_path: String?,
+        var adult: Boolean?,
+        var overview: String?,
+        var release_date: String?
     ) : Parcelable {
         constructor(source: Parcel) : this(
                 source.readValue(Int::class.java.classLoader) as Int?,
-                source.readValue(Int::class.java.classLoader) as Int?,
+                source.readValue(Int::class.java.classLoader) as Int,
                 source.readValue(Boolean::class.java.classLoader) as Boolean?,
                 source.readValue(Double::class.java.classLoader) as Double?,
                 source.readString(),
@@ -37,7 +39,6 @@ data class Movie(
                 source.readString(),
                 source.readString(),
                 source.readString(),
-                ArrayList<Int?>().apply { source.readList(this, Int::class.java.classLoader) },
                 source.readString(),
                 source.readValue(Boolean::class.java.classLoader) as Boolean?,
                 source.readString(),
@@ -56,7 +57,6 @@ data class Movie(
             writeString(poster_path)
             writeString(original_language)
             writeString(original_title)
-            writeList(genre_ids)
             writeString(backdrop_path)
             writeValue(adult)
             writeString(overview)

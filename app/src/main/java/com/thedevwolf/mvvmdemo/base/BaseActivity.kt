@@ -18,6 +18,10 @@ abstract class BaseActivity:AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        //Provide context to dagger component
+        injector = (application as App).netComponent
+            ?.contextModule(ContextModule(this))!!.build()
+        injector.inject(this)
         super.onCreate(savedInstanceState)
         if (fullScreen()){
             requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -31,10 +35,7 @@ abstract class BaseActivity:AppCompatActivity() {
             hideInput()
         }
 
-        //Provide context to dagger component
-         injector = (application as App).netComponent
-            ?.contextModule(ContextModule(this))!!.build()
-        injector.inject(this)
+
         inject(injector!!)
 
         init(savedInstanceState)

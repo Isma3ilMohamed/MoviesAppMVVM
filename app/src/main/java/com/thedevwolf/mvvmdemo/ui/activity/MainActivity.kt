@@ -19,6 +19,7 @@ class MainActivity : BaseActivity() {
     override fun init(savedInstanceState: Bundle?) {
         mainBinding=DataBindingUtil.setContentView(this,R.layout.activity_main)
         mainViewModel= ViewModelProviders.of(this).get(MainViewModel::class.java)
+        mainBinding.setLifecycleOwner(this)
 
        mainViewModel.loadingFragment.observe(this, Observer {
            openFragment(it)

@@ -16,14 +16,14 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:mutableVisibility="@{movie.getFavoriteEmpty}"
+                app:mutableVisibility="@{movie.favoriteEmpty}"
                 android:id="@+id/tv_no_fav"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                 android:visibility="gone"/>
         <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:injectAdapter="@{movie.getFavoriteAdapter}"
+                app:injectAdapter="@{movie.favoriteAdapter}"
                 app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"

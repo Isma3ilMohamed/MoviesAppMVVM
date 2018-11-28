@@ -1,28 +1,24 @@
 package com.thedevwolf.mvvmdemo.data.db
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy.REPLACE
-import androidx.room.Query
-import com.thedevwolf.mvvmdemo.data.db.Entity.MovieEntity
+import androidx.room.*
+import com.thedevwolf.moviesappmvvm.data.model.Movie
 
 @Dao
 interface MovieDao {
 
 
 
-    @Query("SELECT * FROM data")
-    fun getAllMovie(): LiveData<List<MovieEntity>>
+    @Query("SELECT * FROM result")
+    fun getAllMovie(): LiveData<List<Movie.Result>>
 
-    @Insert(onConflict = REPLACE)
-    fun insertMovie(movie: MovieEntity)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)  // or OnConflictStrategy.IGNORE
+    fun insertMovie(movie: Movie.Result)
 
     @Delete
-    fun deleteMovie(movie: MovieEntity)
+    fun deleteMovie(movie: Movie.Result)
 
-    @Query("SELECT * FROM data WHERE id = :id")
-    fun getMovieById(id:Int):LiveData<MovieEntity>
+    @Query("SELECT * FROM result WHERE id = :id")
+    fun getMovieById(id:Int):LiveData<Movie.Result>
 
 }

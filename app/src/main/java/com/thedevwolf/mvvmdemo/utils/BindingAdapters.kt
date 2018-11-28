@@ -9,16 +9,25 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.squareup.picasso.Picasso
 
 
-
-
-
 @BindingAdapter(value = arrayOf("imageUrl", "placeholder"), requireAll = false)
 fun setImageUrl(imageView: ImageView, imageUrl: String?, placeholder: Drawable?) {
-  Picasso.get().load(imageUrl).placeholder(placeholder!!).error(placeholder).into(imageView)
+    Picasso.get().load(imageUrl).placeholder(placeholder!!).error(placeholder).into(imageView)
+
+}
+
+@BindingAdapter("fabImage")
+fun setImageToFab(fab: FloatingActionButton, image: Int?) {
+    fab.setImageResource(image!!)
+
+}
+
+
+fun setFabClickListener(){
 
 }
 
@@ -28,15 +37,19 @@ fun setAdapter(view: RecyclerView, adapter: RecyclerView.Adapter<*>) {
 }
 
 @BindingAdapter("mutableVisibility")
-fun setMutableVisibility(view: View, visibility: MutableLiveData<Int>?){
+fun setMutableVisibility(view: View, visibility: MutableLiveData<Int>?) {
     val parentActivity: AppCompatActivity? = view.getParentActivity()
-    if (parentActivity!=null&&visibility!=null){
-        visibility.observe(parentActivity, Observer{
-            value -> view.visibility=value?:View.GONE
+    if (parentActivity != null && visibility != null) {
+        visibility.observe(parentActivity, Observer { value ->
+            view.visibility = value ?: View.GONE
         })
     }
 }
+
 @BindingAdapter("onNavigationItemSelected")
-fun setNavigationBottomListener(view:BottomNavigationView,listener: BottomNavigationView.OnNavigationItemSelectedListener){
+fun setNavigationBottomListener(
+    view: BottomNavigationView,
+    listener: BottomNavigationView.OnNavigationItemSelectedListener
+) {
     view.setOnNavigationItemSelectedListener(listener)
 }

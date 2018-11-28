@@ -27,6 +27,7 @@ class MostPopularFragment:Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         mostPopularBinding=DataBindingUtil.inflate(inflater,R.layout.fragment_most_popular,container,false)
 
+
         return mostPopularBinding.root
     }
 
@@ -42,7 +43,7 @@ class MostPopularFragment:Fragment() {
     private fun initFragment() {
 
         mostPopularViewModel= ViewModelProviders.of(this).get(MostPopularViewModel::class.java)
-
+        mostPopularBinding.setLifecycleOwner(this)
         //layout manager
 
         if  (resources.configuration.orientation== Configuration.ORIENTATION_LANDSCAPE) {

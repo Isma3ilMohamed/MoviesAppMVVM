@@ -50,22 +50,14 @@ class TopRatedViewModel(application: Application) : BaseAndroidViewModel(applica
                 .doOnSubscribe {
                     loadingVisibility.value = View.VISIBLE
                     errorMessage.value = null
-                    Log.e(javaClass.simpleName,"loading")
                 }
                 .doOnTerminate {
                     loadingVisibility.value = View.GONE
-
-                    Log.e(javaClass.simpleName,"loaded")
                 }
                 .subscribe({
                     heroesAdapter.addHeros(it.results)
-
-                    Log.e(javaClass.simpleName,"success")
                 }, {
-
-                    Log.e(javaClass.simpleName,"failed")
                     errorMessage.value = "error while fetching data"
-
                 })
         )
     }

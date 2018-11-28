@@ -32,6 +32,7 @@ class FavoriteFragment:Fragment() {
 
     private fun initFragment() {
         favoriteViewModel=ViewModelProviders.of(this).get(FavoriteViewModel::class.java)
+        favoriteBinding.setLifecycleOwner(this)
 
         if  (resources.configuration.orientation==Configuration.ORIENTATION_LANDSCAPE){
             favoriteBinding.rvMovies.layoutManager = GridLayoutManager(context, 3)

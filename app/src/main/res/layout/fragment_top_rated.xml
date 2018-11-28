@@ -11,7 +11,7 @@
         <ProgressBar
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:mutableVisibility="@{movie.getLoadingVisibility}"
+                app:mutableVisibility="@{movie.loadingVisibility}"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -24,7 +24,7 @@
                 android:id="@+id/rv_movies"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:injectAdapter="@{movie.getHeroesAdapter}"
+                app:injectAdapter="@{movie.heroesAdapter}"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

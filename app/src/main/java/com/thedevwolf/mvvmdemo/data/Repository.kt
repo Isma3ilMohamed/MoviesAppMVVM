@@ -24,13 +24,20 @@ class Repository @Inject constructor(private val api: Api,private val movieDao: 
 
 
     //Database
-    fun getFavoriteMovies():LiveData<List<MovieEntity>>{
+    fun getFavoriteMovies():LiveData<List<Movie.Result>>{
 
         return movieDao.getAllMovie()
     }
 
-    fun getFavoriteMovie(id:Int):LiveData<MovieEntity>{
+    fun getFavoriteMovie(id:Int):LiveData<Movie.Result>{
         return movieDao.getMovieById(id)
     }
+    fun insertMovie(movieEntity: Movie.Result){
+        movieDao.insertMovie(movieEntity)
+    }
+    fun deleteMovie(movieEntity: Movie.Result){
+        movieDao.deleteMovie(movieEntity)
+    }
+
 
 }
