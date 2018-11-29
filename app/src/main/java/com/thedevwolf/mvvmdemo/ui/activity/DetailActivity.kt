@@ -1,10 +1,9 @@
 package com.thedevwolf.mvvmdemo.ui.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
-import com.thedevwolf.moviesappmvvm.data.model.Movie
+import com.thedevwolf.mvvmdemo.data.model.Movie
 import com.thedevwolf.mvvmdemo.R
 import com.thedevwolf.mvvmdemo.base.BaseActivity
 import com.thedevwolf.mvvmdemo.databinding.ActivityDetailBinding
@@ -19,15 +18,15 @@ class DetailActivity : BaseActivity() {
     lateinit var factory: DetailFactory
 
     //Rec Var
-    var result: Movie.Result? = null
+    var movie: Movie.Result? = null
 
     override fun init(savedInstanceState: Bundle?) {
 
         detailBinding = DataBindingUtil.setContentView(this, getLayoutRes())
         detailBinding.setLifecycleOwner(this)
-        if (intent.extras != null) result = intent.extras.getParcelable(MOVIE)
+        if (intent.extras != null) movie = intent.extras.getParcelable(MOVIE)
 
-        factory = DetailFactory(this.application, result!!)
+        factory = DetailFactory(this.application, movie!!)
         detailViewModel = ViewModelProviders.of(this, factory).get(DetailViewModel::class.java)
         detailBinding.movie = detailViewModel
 

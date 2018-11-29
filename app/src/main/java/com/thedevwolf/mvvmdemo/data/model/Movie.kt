@@ -1,4 +1,4 @@
-package com.thedevwolf.moviesappmvvm.data.model
+package com.thedevwolf.mvvmdemo.data.model
 
 import android.os.Parcel
 import android.os.Parcelable
@@ -13,7 +13,7 @@ data class Movie(
         var results: List<Result?>?
 ) {
 
-    @Entity(tableName = "result")
+    @Entity(tableName = "movie")
     data class Result(
         var vote_count: Int?,
         @PrimaryKey var id: Int,

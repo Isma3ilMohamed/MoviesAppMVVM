@@ -2,20 +2,16 @@ package com.thedevwolf.mvvmdemo.vm.activity
 
 import android.app.Application
 import android.util.Log
-import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.thedevwolf.mvvmdemo.R
 import com.thedevwolf.mvvmdemo.base.BaseAndroidViewModel
 import com.thedevwolf.mvvmdemo.data.Repository
-import com.thedevwolf.mvvmdemo.ui.adapter.HeroesAdapter
 import com.thedevwolf.mvvmdemo.ui.fragment.FavoriteFragment
 import com.thedevwolf.mvvmdemo.ui.fragment.MostPopularFragment
 import com.thedevwolf.mvvmdemo.ui.fragment.TopRatedFragment
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 
@@ -37,7 +33,7 @@ class MainViewModel(application: Application) : BaseAndroidViewModel(application
     //for progress bar
     val loadingVisibility = MutableLiveData<Int>()
     //for adapter
-    var heroesAdapter = HeroesAdapter()
+    var heroesAdapter = MoviesAdapter()
 
     //error control
     val errorMessage: MutableLiveData<String> = MutableLiveData()

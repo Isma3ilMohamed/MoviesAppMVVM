@@ -2,13 +2,16 @@ package com.thedevwolf.mvvmdemo.ui.fragment
 
 import android.content.res.Configuration
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
+import com.google.gson.Gson
 import com.thedevwolf.mvvmdemo.R
 import com.thedevwolf.mvvmdemo.base.BaseFragment
 import com.thedevwolf.mvvmdemo.databinding.FragmentFavoriteBinding
@@ -35,11 +38,17 @@ class FavoriteFragment:Fragment() {
         favoriteBinding.setLifecycleOwner(this)
 
         if  (resources.configuration.orientation==Configuration.ORIENTATION_LANDSCAPE){
+
             favoriteBinding.rvMovies.layoutManager = GridLayoutManager(context, 3)
+
         }else {
             favoriteBinding.rvMovies.layoutManager = GridLayoutManager(context, 2)
         }
+
+
+
         favoriteBinding.movie=favoriteViewModel
+
 
     }
 

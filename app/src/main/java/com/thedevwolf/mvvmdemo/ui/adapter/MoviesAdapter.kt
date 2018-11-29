@@ -6,15 +6,15 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.NonNull
 import androidx.databinding.DataBindingUtil
-import com.thedevwolf.moviesappmvvm.data.model.Movie
+import com.thedevwolf.mvvmdemo.data.model.Movie
 import com.thedevwolf.mvvmdemo.R
 import com.thedevwolf.mvvmdemo.databinding.RecycleMovieBinding
 import com.thedevwolf.mvvmdemo.vm.adapter.MovieViewModel
 
 
 
-class HeroesAdapter (val onClickListener: (Movie.Result) -> Unit):
-    RecyclerView.Adapter<HeroesAdapter.HeroViewHolder>() {
+class MoviesAdapter (val onClickListener: (Movie.Result) -> Unit):
+    RecyclerView.Adapter<MoviesAdapter.HeroViewHolder>() {
 
      var heroList:MutableList<Movie.Result?> = mutableListOf()
 

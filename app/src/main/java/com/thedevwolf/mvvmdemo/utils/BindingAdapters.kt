@@ -21,8 +21,8 @@ fun setImageUrl(imageView: ImageView, imageUrl: String?, placeholder: Drawable?)
 }
 
 @BindingAdapter("fabImage")
-fun setImageToFab(fab: FloatingActionButton, image: Int?) {
-    fab.setImageResource(image!!)
+fun setImageToFab(fab: FloatingActionButton, image: Int) {
+    fab.setImageResource(image)
 
 }
 

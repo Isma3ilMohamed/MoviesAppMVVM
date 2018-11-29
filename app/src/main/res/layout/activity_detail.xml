@@ -175,6 +175,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/eight_dp"
+                android:id="@+id/fab"
                 android:layout_marginEnd="@dimen/eight_dp"
                 android:focusable="true"
                 android:onClick="@{() -> movie.addRemoveMovieToFavorite(movie.movieResult)}"
