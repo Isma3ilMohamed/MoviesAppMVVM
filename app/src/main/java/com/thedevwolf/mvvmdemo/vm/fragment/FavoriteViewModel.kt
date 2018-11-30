@@ -9,6 +9,7 @@ import com.google.gson.Gson
 import com.orhanobut.logger.Logger
 import com.thedevwolf.mvvmdemo.base.BaseAndroidViewModel
 import com.thedevwolf.mvvmdemo.data.Repository
+import com.thedevwolf.mvvmdemo.data.database.MovieDao
 import com.thedevwolf.mvvmdemo.data.model.Movie
 import com.thedevwolf.mvvmdemo.ui.activity.DetailActivity
 import com.thedevwolf.mvvmdemo.ui.adapter.FavoriteAdapter
@@ -26,38 +27,13 @@ class FavoriteViewModel(application: Application) : BaseAndroidViewModel(applica
     @Inject
     lateinit var repository: Repository
 
-    val moviesList:MutableLiveData<List<Movie.Result>> = MutableLiveData()
-    val favoriteAdapter = FavoriteAdapter()
 
-    val favoriteEmpty by lazy {
-        MutableLiveData<Int>()
+
+    fun getAllMovies():LiveData<List<Movie.Result>>{
+        return repository.getLiveDataMovies()
     }
 
-    init {
-        loadData()
-    }
 
-    private fun loadData() {
-
-        repository.compositeDisposable
-            .add(
-                repository.getAllMovies()
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe({
-
-                        favoriteAdapter.submitList(it)
-                    },{
-
-                    })
-            )
-
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        repository.clear()
-    }
 
 
 

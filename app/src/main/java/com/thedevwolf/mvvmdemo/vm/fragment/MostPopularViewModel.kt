@@ -18,12 +18,8 @@ import javax.inject.Inject
 
 class MostPopularViewModel(application: Application):BaseAndroidViewModel(application) {
 
-
-
     @Inject
     lateinit var repository: Repository
-
-    private val compositeDisposable = CompositeDisposable()
     val loadingVisibility = MutableLiveData<Int>()
     var heroesAdapter = MoviesAdapter {
         application.apply {
@@ -42,7 +38,7 @@ class MostPopularViewModel(application: Application):BaseAndroidViewModel(applic
     }
 
     private fun loadTopRatedMovie() {
-        compositeDisposable.add(
+        repository.compositeDisposable.add(
             repository.getPopularMovies()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -65,7 +61,7 @@ class MostPopularViewModel(application: Application):BaseAndroidViewModel(applic
 
     override fun onCleared() {
         super.onCleared()
-        compositeDisposable.dispose()
+        repository.clear()
     }
 
 }

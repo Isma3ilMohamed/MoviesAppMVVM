@@ -17,11 +17,8 @@ import org.jetbrains.anko.newTask
 import javax.inject.Inject
 
 class TopRatedViewModel(application: Application) : BaseAndroidViewModel(application) {
-
     @Inject
     lateinit var repository: Repository
-
-    private val compositeDisposable = CompositeDisposable()
     val loadingVisibility = MutableLiveData<Int>()
     var heroesAdapter = MoviesAdapter{
 
@@ -41,7 +38,7 @@ class TopRatedViewModel(application: Application) : BaseAndroidViewModel(applica
     }
 
     private fun loadTopRatedMovie() {
-        compositeDisposable.add(
+        repository.compositeDisposable.add(
             repository.getTopRated()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -63,7 +60,7 @@ class TopRatedViewModel(application: Application) : BaseAndroidViewModel(applica
 
     override fun onCleared() {
         super.onCleared()
-        compositeDisposable.dispose()
+        repository.clear()
     }
 
 

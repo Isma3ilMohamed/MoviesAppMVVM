@@ -2,7 +2,6 @@ package com.thedevwolf.mvvmdemo.ui.fragment
 
 import android.content.res.Configuration
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,16 +10,16 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
-import com.google.gson.Gson
 import com.thedevwolf.mvvmdemo.R
-import com.thedevwolf.mvvmdemo.base.BaseFragment
 import com.thedevwolf.mvvmdemo.databinding.FragmentFavoriteBinding
+import com.thedevwolf.mvvmdemo.ui.adapter.FavoriteAdapter
 import com.thedevwolf.mvvmdemo.vm.fragment.FavoriteViewModel
 
 class FavoriteFragment:Fragment() {
 
     lateinit var favoriteBinding: FragmentFavoriteBinding
     lateinit var favoriteViewModel: FavoriteViewModel
+    val favoriteAdapter = FavoriteAdapter()
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         favoriteBinding=DataBindingUtil.inflate(inflater,R.layout.fragment_favorite,container,false)
 
@@ -45,12 +44,19 @@ class FavoriteFragment:Fragment() {
             favoriteBinding.rvMovies.layoutManager = GridLayoutManager(context, 2)
         }
 
+       favoriteViewModel.getAllMovies().observe(this, Observer {
+           if (it!=null){
+               favoriteAdapter.submitList(it)
+               favoriteBinding.rvMovies.adapter=favoriteAdapter
+           }else{
+               favoriteBinding.tvNoFav.visibility=View.VISIBLE
+           }
+       })
 
-
-        favoriteBinding.movie=favoriteViewModel
 
 
     }
+
 
 
     companion object {

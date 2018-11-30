@@ -10,6 +10,7 @@ import com.thedevwolf.mvvmdemo.BuildConfig
 import com.thedevwolf.mvvmdemo.data.database.MovieDao
 
 import com.thedevwolf.mvvmdemo.data.network.Api
+import io.reactivex.Maybe
 import io.reactivex.Observable
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -34,13 +35,13 @@ class Repository @Inject constructor(private val api: Api, private val movieDao:
 
     //Database
 
-    fun getAllMovies(): Single<List<Movie.Result>> {
+    /*fun getAllMovies(): Single<List<Movie.Result>> {
      return  movieDao.getAllMovies()
-    }
+    }*/
 
-    fun getMovie(id: Int): Single<Movie.Result> {
+    /*fun getMovie(id: Int): Maybe<Movie.Result> {
         return movieDao.getMovieById(id)
-    }
+    }*/
 
     fun insertMovie(movie: Movie.Result) {
         compositeDisposable.add(
@@ -60,6 +61,12 @@ class Repository @Inject constructor(private val api: Api, private val movieDao:
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe()
         )
+    }
+    fun getLiveDataMovies():LiveData<List<Movie.Result>>{
+        return movieDao.getMovies()
+    }
+    fun getLiveDataMovie(id:Int):LiveData<Movie.Result>{
+        return movieDao.getLiveDataMovie(id)
     }
 
     fun clear() {

@@ -38,6 +38,8 @@ class FavoriteAdapter : ListAdapter<Movie.Result, FavoriteAdapter.ItemViewholder
             // TODO: Bind the data with View
             heroViewModel.bind(item)
             movieBinding.movie=heroViewModel
+
+
             setOnClickListener {
                 movieBinding.root.context
                     .apply {

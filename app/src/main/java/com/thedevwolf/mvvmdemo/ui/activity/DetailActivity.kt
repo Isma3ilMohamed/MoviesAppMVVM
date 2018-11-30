@@ -2,6 +2,7 @@ package com.thedevwolf.mvvmdemo.ui.activity
 
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.thedevwolf.mvvmdemo.data.model.Movie
 import com.thedevwolf.mvvmdemo.R
@@ -28,6 +29,11 @@ class DetailActivity : BaseActivity() {
 
         factory = DetailFactory(this.application, movie!!)
         detailViewModel = ViewModelProviders.of(this, factory).get(DetailViewModel::class.java)
+
+        detailViewModel.repository.getLiveDataMovie(movie!!.id).observe(this, Observer {
+            detailViewModel.isFavorite.value=it!=null
+        })
+
         detailBinding.movie = detailViewModel
 
 

@@ -12,10 +12,8 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.thedevwolf.mvvmdemo.R
-import com.thedevwolf.mvvmdemo.base.BaseFragment
 import com.thedevwolf.mvvmdemo.databinding.FragmentMostPopularBinding
 import com.thedevwolf.mvvmdemo.vm.fragment.MostPopularViewModel
-import com.thedevwolf.mvvmdemo.vm.fragment.TopRatedViewModel
 
 class MostPopularFragment:Fragment() {
 

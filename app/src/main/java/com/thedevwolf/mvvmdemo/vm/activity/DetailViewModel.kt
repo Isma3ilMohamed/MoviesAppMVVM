@@ -39,7 +39,7 @@ class DetailViewModel( application: Application,val result: Movie.Result)
 
     private fun loadData() {
         movieResult.value=result
-        repository.getAllMovies()
+        //repository.getAllMovies()
         isMovieFavorite()
 
     }
@@ -54,16 +54,6 @@ class DetailViewModel( application: Application,val result: Movie.Result)
         //init value
         isFavorite.value=false
 
-        repository.compositeDisposable.add(
-            repository.getMovie(result.id)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({
-                    isFavorite.value = it!=null
-                },{
-
-                })
-        )
         favDrawable=Transformations.map(isFavorite){
             if (it) R.drawable.like_red else R.drawable.like
         }

@@ -15,19 +15,19 @@ import javax.inject.Inject
 
 abstract class BaseActivity:AppCompatActivity() {
 
-     lateinit var injector:ApiComponent
+     //lateinit var injector:ApiComponent
 
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
 
-        //Provide context to dagger component
+        /*//Provide context to dagger component
         injector = (application as App).netComponent
             ?.contextModule(ContextModule(this))!!.build()
 
         //inject dagger
-        injector.inject(this)
+        injector.inject(this)*/
 
 
         super.onCreate(savedInstanceState)
