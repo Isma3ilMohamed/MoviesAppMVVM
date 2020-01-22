@@ -13,13 +13,13 @@ import com.thedevwolf.mvvmdemo.vm.activity.MainViewModel
 
 class MainActivity : BaseActivity() {
 
-    lateinit var mainBinding: ActivityMainBinding
-    lateinit var mainViewModel: MainViewModel
+    private lateinit var mainBinding: ActivityMainBinding
+    private lateinit var mainViewModel: MainViewModel
 
     override fun init(savedInstanceState: Bundle?) {
         mainBinding=DataBindingUtil.setContentView(this,R.layout.activity_main)
         mainViewModel= ViewModelProviders.of(this).get(MainViewModel::class.java)
-        mainBinding.setLifecycleOwner(this)
+        mainBinding.lifecycleOwner = this
 
        mainViewModel.loadingFragment.observe(this, Observer {
            openFragment(it)

@@ -3,7 +3,6 @@ package com.thedevwolf.mvvmdemo.ui.adapter
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
@@ -16,7 +15,6 @@ import com.thedevwolf.mvvmdemo.ui.activity.DetailActivity
 import com.thedevwolf.mvvmdemo.utils.Constants
 import com.thedevwolf.mvvmdemo.vm.adapter.MovieViewModel
 import org.jetbrains.anko.intentFor
-import org.jetbrains.anko.startActivity
 
 class FavoriteAdapter : ListAdapter<Movie.Result, FavoriteAdapter.ItemViewholder>(DiffCallback()) {
 
@@ -28,14 +26,14 @@ class FavoriteAdapter : ListAdapter<Movie.Result, FavoriteAdapter.ItemViewholder
         return ItemViewholder(movieBinding)
     }
 
-    override fun onBindViewHolder(holder: FavoriteAdapter.ItemViewholder, position: Int) {
+    override fun onBindViewHolder(holder: ItemViewholder, position: Int) {
         holder.bind(getItem(position))
     }
 
     class ItemViewholder(private val movieBinding: RecycleMovieBinding) : RecyclerView.ViewHolder(movieBinding.root) {
         private val heroViewModel= MovieViewModel()
         fun bind(item: Movie.Result) = with(itemView) {
-            // TODO: Bind the data with View
+
             heroViewModel.bind(item)
             movieBinding.movie=heroViewModel
 

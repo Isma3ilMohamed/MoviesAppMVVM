@@ -1,4 +1,4 @@
-package com.thedevwolf.mvvmdemo.controller
+package com.thedevwolf.mvvmdemo
 
 import android.app.Application
 import com.thedevwolf.mvvmdemo.di.component.DaggerApiComponent

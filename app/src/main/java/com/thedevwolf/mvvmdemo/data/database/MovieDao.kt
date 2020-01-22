@@ -9,9 +9,6 @@ import io.reactivex.Single
 @Dao
 interface MovieDao {
 
-    /*@Query("SELECT * FROM movie")
-    fun getAllMovies():Single<List<Movie.Result>>*/
-
 
 
     @Query("SELECT * FROM movie")
@@ -25,8 +22,8 @@ interface MovieDao {
     @Delete
     fun deleteMovie(movie: Movie.Result)
 
-   /* @Query("SELECT * FROM movie WHERE id = :id")
-    fun getMovieById(id:Int):Maybe<Movie.Result>*/
+
+
 
 
     @Query("SELECT * FROM movie WHERE id = :id")

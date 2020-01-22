@@ -2,7 +2,9 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
+<!--
         <import type="java.lang.Double"/>
+-->
         <import type="com.thedevwolf.mvvmdemo.utils.Constants"/>
         <variable name="movie" type="com.thedevwolf.mvvmdemo.vm.activity.DetailViewModel"/>
 

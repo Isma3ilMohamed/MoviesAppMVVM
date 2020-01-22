@@ -7,10 +7,10 @@ import androidx.room.PrimaryKey
 
 
 data class Movie(
-        var page: Int?,
-        var total_results: Int?,
-        var total_pages: Int?,
-        var results: List<Result?>?
+    var page: Int?,
+    var total_results: Int?,
+    var total_pages: Int?,
+    var results: List<Result?>?
 ) {
 
     @Entity(tableName = "movie")
@@ -30,19 +30,19 @@ data class Movie(
         var release_date: String?
     ) : Parcelable {
         constructor(source: Parcel) : this(
-                source.readValue(Int::class.java.classLoader) as Int?,
-                source.readValue(Int::class.java.classLoader) as Int,
-                source.readValue(Boolean::class.java.classLoader) as Boolean?,
-                source.readValue(Double::class.java.classLoader) as Double?,
-                source.readString(),
-                source.readValue(Double::class.java.classLoader) as Double?,
-                source.readString(),
-                source.readString(),
-                source.readString(),
-                source.readString(),
-                source.readValue(Boolean::class.java.classLoader) as Boolean?,
-                source.readString(),
-                source.readString()
+            source.readValue(Int::class.java.classLoader) as Int?,
+            source.readValue(Int::class.java.classLoader) as Int,
+            source.readValue(Boolean::class.java.classLoader) as Boolean?,
+            source.readValue(Double::class.java.classLoader) as Double?,
+            source.readString(),
+            source.readValue(Double::class.java.classLoader) as Double?,
+            source.readString(),
+            source.readString(),
+            source.readString(),
+            source.readString(),
+            source.readValue(Boolean::class.java.classLoader) as Boolean?,
+            source.readString(),
+            source.readString()
         )
 
         override fun describeContents() = 0

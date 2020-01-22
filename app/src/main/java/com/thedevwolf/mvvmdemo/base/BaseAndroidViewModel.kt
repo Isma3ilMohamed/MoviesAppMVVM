@@ -2,7 +2,7 @@ package com.thedevwolf.mvvmdemo.base
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import com.thedevwolf.mvvmdemo.controller.App
+import com.thedevwolf.mvvmdemo.App
 import com.thedevwolf.mvvmdemo.di.component.ApiComponent
 import com.thedevwolf.mvvmdemo.di.module.ContextModule
 import com.thedevwolf.mvvmdemo.vm.activity.DetailViewModel

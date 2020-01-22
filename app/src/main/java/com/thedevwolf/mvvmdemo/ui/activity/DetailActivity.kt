@@ -24,8 +24,8 @@ class DetailActivity : BaseActivity() {
     override fun init(savedInstanceState: Bundle?) {
 
         detailBinding = DataBindingUtil.setContentView(this, getLayoutRes())
-        detailBinding.setLifecycleOwner(this)
-        if (intent.extras != null) movie = intent.extras.getParcelable(MOVIE)
+        detailBinding.lifecycleOwner = this
+        if (intent.extras != null) movie = intent?.extras?.getParcelable(MOVIE)
 
         factory = DetailFactory(this.application, movie!!)
         detailViewModel = ViewModelProviders.of(this, factory).get(DetailViewModel::class.java)

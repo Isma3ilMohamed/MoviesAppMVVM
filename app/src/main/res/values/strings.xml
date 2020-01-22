@@ -1,5 +1,8 @@
 <resources>
-    <string name="app_name">MVVM Demo</string>
+    <string name="app_name">Movie App</string>
     <string name="retry">Retry</string>
     <string name="no_favorite_movie">No favorite Movie</string>
+    <string name="top_rated">Top Rated</string>
+    <string name="most_popular">Most Popular</string>
+    <string name="favorites">Favorites</string>
 </resources>

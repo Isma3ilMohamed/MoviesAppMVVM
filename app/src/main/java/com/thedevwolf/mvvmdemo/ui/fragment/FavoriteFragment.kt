@@ -19,7 +19,8 @@ class FavoriteFragment:Fragment() {
 
     lateinit var favoriteBinding: FragmentFavoriteBinding
     lateinit var favoriteViewModel: FavoriteViewModel
-    val favoriteAdapter = FavoriteAdapter()
+    private val favoriteAdapter = FavoriteAdapter()
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         favoriteBinding=DataBindingUtil.inflate(inflater,R.layout.fragment_favorite,container,false)
 
@@ -34,7 +35,7 @@ class FavoriteFragment:Fragment() {
 
     private fun initFragment() {
         favoriteViewModel=ViewModelProviders.of(this).get(FavoriteViewModel::class.java)
-        favoriteBinding.setLifecycleOwner(this)
+        favoriteBinding.lifecycleOwner = this
 
         if  (resources.configuration.orientation==Configuration.ORIENTATION_LANDSCAPE){
 
@@ -43,18 +44,20 @@ class FavoriteFragment:Fragment() {
         }else {
             favoriteBinding.rvMovies.layoutManager = GridLayoutManager(context, 2)
         }
+    }
 
-       favoriteViewModel.getAllMovies().observe(this, Observer {
-           if (it!=null){
-               favoriteAdapter.submitList(it)
-               favoriteBinding.rvMovies.adapter=favoriteAdapter
-           }else{
-               favoriteBinding.tvNoFav.visibility=View.VISIBLE
-           }
-       })
+    override fun onResume() {
+        super.onResume()
+        favoriteViewModel.getAllMovies().observe(this, Observer {
+            if (it.isNotEmpty()){
+                favoriteAdapter.submitList(it)
+                favoriteBinding.rvMovies.adapter=favoriteAdapter
+            }else{
+                favoriteBinding.tvNoFav.visibility=View.VISIBLE
+                favoriteBinding.rvMovies.visibility=View.GONE
 
-
-
+            }
+        })
     }
 
 

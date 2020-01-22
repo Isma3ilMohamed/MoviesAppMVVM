@@ -14,7 +14,7 @@ class DatabaseModule {
     @Reusable
     @Provides
     fun provideMyDatabase(context: Application): MovieDatabase {
-        return Room.databaseBuilder(context.applicationContext, MovieDatabase::class.java, "m-db")
+        return Room.databaseBuilder(context.applicationContext, MovieDatabase::class.java, "my-db")
             .build()
     }
 

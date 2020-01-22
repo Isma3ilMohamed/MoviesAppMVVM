@@ -29,41 +29,11 @@ class MainViewModel(application: Application) : BaseAndroidViewModel(application
         MutableLiveData<String>()
     }
 
-/*
-    //for progress bar
-    val loadingVisibility = MutableLiveData<Int>()
-    //for adapter
-    var heroesAdapter = MoviesAdapter()
-
-    //error control
-    val errorMessage: MutableLiveData<String> = MutableLiveData()
-    val errorClickListener = View.OnClickListener { loadHeros() }*/
 
     init {
         loadingFragment.value=TopRatedFragment.newInstance()
         loadedFragmentTitle.value="Top Rated"
-        //loadHeros()
     }
-
-/*    private fun loadHeros() {
-        compositeDisposable.add(
-            repository.getPopularMovies()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .doOnSubscribe {
-                    loadingVisibility.value = View.VISIBLE
-                    errorMessage.value = null
-                }
-                .doOnTerminate {
-                    loadingVisibility.value = View.GONE
-                }
-                .subscribe({
-                    heroesAdapter.addHeros(it.results)
-                }, {
-                    errorMessage.value = "error while fetching data"
-                })
-        )
-    }*/
 
 
      val navigationMenuSelectListener: BottomNavigationView.OnNavigationItemSelectedListener =

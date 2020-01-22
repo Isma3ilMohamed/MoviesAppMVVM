@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <data>
-        <variable name="movie"   type="com.thedevwolf.mvvmdemo.vm.fragment.MostPopularViewModel"/>
+
+        <variable
+                name="movie"
+                type="com.thedevwolf.mvvmdemo.vm.fragment.MostPopularViewModel" />
     </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-    >
+            android:layout_height="match_parent">
 
         <ProgressBar
+                style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Large"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:mutableVisibility="@{movie.loadingVisibility}"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Large"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:mutableVisibility="@{movie.loadingVisibility}" />
 
 
         <androidx.recyclerview.widget.RecyclerView
@@ -25,10 +29,10 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:injectAdapter="@{movie.heroesAdapter}"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

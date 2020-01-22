@@ -4,7 +4,6 @@ import android.app.Application
 import dagger.Module
 import dagger.Provides
 import dagger.Reusable
-import javax.inject.Singleton
 
 @Module
 internal class AppModule(private val mApplication: Application) {

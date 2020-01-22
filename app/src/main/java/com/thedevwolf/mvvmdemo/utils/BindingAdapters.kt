@@ -27,9 +27,6 @@ fun setImageToFab(fab: FloatingActionButton, image: Int) {
 }
 
 
-fun setFabClickListener(){
-
-}
 
 @BindingAdapter("injectAdapter")
 fun setAdapter(view: RecyclerView, adapter: RecyclerView.Adapter<*>) {

@@ -41,7 +41,7 @@ class MostPopularFragment:Fragment() {
     private fun initFragment() {
 
         mostPopularViewModel= ViewModelProviders.of(this).get(MostPopularViewModel::class.java)
-        mostPopularBinding.setLifecycleOwner(this)
+        mostPopularBinding.lifecycleOwner = this
         //layout manager
 
         if  (resources.configuration.orientation== Configuration.ORIENTATION_LANDSCAPE) {

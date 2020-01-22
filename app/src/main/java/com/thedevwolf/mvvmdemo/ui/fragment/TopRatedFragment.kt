@@ -47,7 +47,7 @@ class TopRatedFragment : Fragment() {
 
         topRatedViewModel=ViewModelProviders.of(this).get(TopRatedViewModel::class.java)
 
-        topRatedBinding.setLifecycleOwner(this)
+        topRatedBinding.lifecycleOwner = this
         //layout manager
 
         if  (resources.configuration.orientation== Configuration.ORIENTATION_LANDSCAPE) {

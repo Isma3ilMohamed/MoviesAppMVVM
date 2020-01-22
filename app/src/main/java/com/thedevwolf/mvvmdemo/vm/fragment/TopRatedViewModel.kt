@@ -10,7 +10,6 @@ import com.thedevwolf.mvvmdemo.ui.activity.DetailActivity
 import com.thedevwolf.mvvmdemo.ui.adapter.MoviesAdapter
 import com.thedevwolf.mvvmdemo.utils.Constants.MOVIE
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.newTask

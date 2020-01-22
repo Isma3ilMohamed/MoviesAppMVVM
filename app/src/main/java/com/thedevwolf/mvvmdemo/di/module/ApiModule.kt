@@ -71,10 +71,14 @@ object ApiModule {
     @Reusable
     @JvmStatic
     internal fun httpLoggingInterceptor(): HttpLoggingInterceptor {
-        val httpLoggingInterceptor =
-            HttpLoggingInterceptor(HttpLoggingInterceptor.Logger { message -> Log.d(javaClass.simpleName, message) })
-        httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
 
-        return httpLoggingInterceptor
+        return HttpLoggingInterceptor(object : HttpLoggingInterceptor.Logger {
+            override fun log(message: String) {
+                Log.d("NETWORK:",message)
+            }
+
+        }).apply {
+            level = HttpLoggingInterceptor.Level.BODY
+        }
     }
 }

@@ -1,19 +1,16 @@
 package com.thedevwolf.mvvmdemo.vm.activity
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
-import com.google.gson.Gson
 
 
 import com.thedevwolf.mvvmdemo.data.model.Movie
 import com.thedevwolf.mvvmdemo.R
 import com.thedevwolf.mvvmdemo.base.BaseAndroidViewModel
 import com.thedevwolf.mvvmdemo.data.Repository
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
+
 
 import javax.inject.Inject
 
@@ -71,8 +68,6 @@ class DetailViewModel( application: Application,val result: Movie.Result)
             }
         }
     }
-
-
 
     override fun onCleared() {
         super.onCleared()
